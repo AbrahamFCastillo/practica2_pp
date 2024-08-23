@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="JugadorMapper">
+
+	<resultMap id="JugadorMap" type="Jugador">
+        <id 		property="id" 		    	column="ID"/>
+        <result 	property="email"			column="EMAIL"/>
+        <result 	property="username" 		column="USERNAME"/>
+   	</resultMap>
+
+	<insert id="ingresaJugador" parameterType="Jugador" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		INSERT INTO JUGADOR
+		(EMAIL, USERNAME) VALUES (#{email}, #{username})
+	</insert>
+	
+	<select id="consultaJugador" resultMap="JugadorMap" parameterType="integer">
+		select * from JUGADOR where id=#{id}
+	</select>
+	
+	<select id="consultaJugadores" resultMap="JugadorMap">
+		select * from JUGADOR
+	</select>
+	
+	<delete id="eliminaJugador" parameterType="integer">
+		delete from JUGADOR where id=#{id}
+	</delete>
+	
+	<update id="actualizaJugador" parameterType="Jugador">
+		UPDATE JUGADOR
+		set EMAIL=#{email}, USERNAME=#{username} 
+		where id=#{id}
+	</update>
+	
+	
+</mapper>

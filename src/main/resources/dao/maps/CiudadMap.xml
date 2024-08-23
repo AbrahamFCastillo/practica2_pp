@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CiudadMapper">
+
+	<resultMap id="CiudadMap" type="Ciudad">
+        <id 		property="id" 		    	column="ID"/>
+        <result 	property="nombre"			column="NOMBRE"/>
+        <result 	property="pais" 		    column="PAIS"/>
+        <result 	property="poblacion" 	column="POBLACION"/>
+   	</resultMap>
+
+	<insert id="ingresaCiudad" parameterType="Ciudad" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		INSERT INTO CIUDAD
+		(NOMBRE, PAIS, POBLACION) VALUES (#{nombre}, #{pais}, #{poblacion})
+	</insert>
+	
+	<select id="consultaCiudad" resultMap="CiudadMap" parameterType="integer">
+		select * from CIUDAD where id=#{id}
+	</select>
+	
+	<select id="consultaCiudades" resultMap="CiudadMap">
+		select * from CIUDAD
+	</select>
+	
+	<delete id="eliminaCiudad" parameterType="integer">
+		delete from CIUDAD where id=#{id}
+	</delete>
+	
+	<update id="actualizaCiudad" parameterType="Ciudad">
+		UPDATE CIUDAD
+		set NOMBRE=#{nombre}, PAIS=#{pais}, POBLACION=#{poblacion}
+		where id=#{id}
+	</update>
+	
+	
+</mapper>

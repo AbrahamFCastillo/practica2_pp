@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AlumnoMapper">
+
+	<resultMap id="AlumnoMap" type="Alumno">
+        <result 	property="nombre"		column="NOMBRE"/>
+        <result 	property="promedio"		column="PROMEDIO"/>
+        <result 	property="edad" 		column="EDAD"/>
+   	</resultMap>
+
+	<insert id="ingresaAlumno" parameterType="Alumno">
+		INSERT INTO ALUMNO
+		(NOMBRE, PROMEDIO,  EDAD) VALUES (#{nombre}, #{promedio}, #{edad})
+	</insert>
+	
+	<select id="consultaAlumnos" resultMap="AlumnoMap">
+		select * from ALUMNO
+	</select>
+	
+	<!--  
+	<update id="actualizaAlumno" parameterType="Alumno">
+		UPDATE ALUMNO
+		set NOMBRE=#{nombre}, PROMEDIO=#{promedio}, APELLIDO_P=#{apellidoP}, APELLIDO_M=#{apellidoM}, EDAD=#{edad} 
+		where matricula=#{matricula}
+	</update>
+	
+	<delete id="eliminaAlumno" parameterType="integer">
+		delete from ALUMNO where matricula=#{matricula}
+	</delete>
+	
+	<select id="consultaAlumno" resultMap="AlumnoMap" parameterType="integer">
+		select * from ALUMNO where matricula=#{matricula}
+	</select>
+	
+	-->
+	
+	
+</mapper>

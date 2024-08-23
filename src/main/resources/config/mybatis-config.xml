@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="lazyLoadingEnabled" value="false" />
+		<setting name="defaultStatementTimeout" value="0"/>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings> 
+
+	<typeAliases>
+		<typeAlias alias="Alumno" type="mx.smartkode.sk.crud.model.Alumno"/>
+		<typeAlias alias="Jugador" type="mx.smartkode.sk.crud.model.Jugador"/>
+		<typeAlias alias="Automovil" type="mx.smartkode.sk.crud.model.Automovil"/>
+		<typeAlias alias="Ciudad" type="mx.smartkode.sk.crud.model.Ciudad"/>
+		<typeAlias alias="CuentaBancaria" type="mx.smartkode.sk.crud.model.CuentaBancaria"/>
+		<typeAlias alias="Computadora" type="mx.smartkode.sk.crud.model.Computadora"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="dao/maps/AlumnoMap.xml" />  
+		<mapper resource="dao/maps/JugadorMap.xml" />  
+		<mapper resource="dao/maps/AutomovilMap.xml" />  
+		<mapper resource="dao/maps/CiudadMap.xml" /> 
+		<mapper resource="dao/maps/CuentaBancariaMap.xml" />  
+		<mapper resource="dao/maps/ComputadoraMap.xml" />  
+	</mappers>
+
+</configuration>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CuentaBancariaMapper">
+
+	<resultMap id="CuentaBancariaMap" type="CuentaBancaria">
+        <id 		property="id" 		    	column="ID"/>
+        <result 	property="titular"			column="TITULAR"/>
+        <result 	property="saldo" 		    column="SALDO"/>
+        <result 	property="tipoCuenta" 	column="TIPOCUENTA"/>
+   	</resultMap>
+
+	<insert id="ingresaCuentaBancaria" parameterType="CuentaBancaria" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		INSERT INTO CUENTABANCARIA
+		(TITULAR, SALDO, TIPOCUENTA) VALUES (#{titular}, #{saldo}, #{tipoCuenta})
+	</insert>
+	
+	<select id="consultaCuentaBancaria" resultMap="CuentaBancariaMap" parameterType="integer">
+		select * from CUENTABANCARIA where id=#{id}
+	</select>
+	
+	<select id="consultaCuentaBancariaes" resultMap="CuentaBancariaMap">
+		select * from CUENTABANCARIA
+	</select>
+	
+	<delete id="eliminaCuentaBancaria" parameterType="integer">
+		delete from CUENTABANCARIA where id=#{id}
+	</delete>
+	
+	<update id="actualizaCuentaBancaria" parameterType="CuentaBancaria">
+		UPDATE CUENTABANCARIA
+		set TITULAR=#{titular}, SALDO=#{saldo}, TIPOCUENTA=#{tipoCuenta}
+		where id=#{id}
+	</update>
+	
+	
+</mapper>

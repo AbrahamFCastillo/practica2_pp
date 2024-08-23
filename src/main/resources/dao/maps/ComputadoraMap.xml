@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ComputadoraMapper">
+
+	<resultMap id="ComputadoraMap" type="Computadora">
+        <id 		property="id" 		    	column="ID"/>
+        <result 	property="marca"			column="MARCA"/>
+        <result 	property="modelo" 		    column="MODELO"/>
+        <result 	property="velocidadProcesador" 	column="VELOCIDADPROCESADOR"/>
+   	</resultMap>
+
+	<insert id="ingresaComputadora" parameterType="Computadora" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		INSERT INTO COMPUTADORA
+		(MARCA, MODELO, VELOCIDADPROCESADOR) VALUES (#{marca}, #{modelo}, #{velocidadProcesador})
+	</insert>
+	
+	<select id="consultaComputadora" resultMap="ComputadoraMap" parameterType="integer">
+		select * from COMPUTADORA where id=#{id}
+	</select>
+	
+	<select id="consultaComputadoraes" resultMap="ComputadoraMap">
+		select * from COMPUTADORA
+	</select>
+	
+	<delete id="eliminaComputadora" parameterType="integer">
+		delete from COMPUTADORA where id=#{id}
+	</delete>
+	
+	<update id="actualizaComputadora" parameterType="Computadora">
+		UPDATE COMPUTADORA
+		set MARCA=#{marca}, MODELO=#{modelo}, VELOCIDADPROCESADOR=#{velocidadProcesador}
+		where id=#{id}
+	</update>
+	
+	
+</mapper>
